@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+    <div class="confirmacao-exclusao">
+        <h2><i class="fas fa-exclamation-triangle"></i> Tem certeza?</h2>
+        <p>Você está prestes a excluir a receita: <strong>"{{ receita.nome }}"</strong></p>
+        <p>Essa ação <span class="destaque-alerta">NÃO</span> pode ser desfeita.</p>
+
+        <form method="POST" class="form-excluir">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Sim, Excluir Definitivamente</button>
+            <a href="{% url 'detalhe_receita' receita.pk %}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Cancelar</a>
+        </form>
+    </div>
+{% endblock %}

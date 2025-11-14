@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% block title %}{{ receita.nome }}{% endblock %}
+
+{% block content %}
+    <h2 class="receita-titulo"><i class="fas fa-utensils"></i> {{ receita.nome }}</h2>
+
+    <div class="receita-detalhe-container">
+        <div class="receita-detalhe-secao">
+            <h3><i class="fas fa-clipboard-list"></i> Ingredientes</h3>
+            <pre>{{ receita.ingredientes }}</pre>
+        </div>
+
+        <div class="receita-detalhe-secao">
+            <h3><i class="fas fa-book"></i> Modo de Preparo</h3>
+            <pre>{{ receita.modo_preparo }}</pre>
+        </div>
+    </div>
+    
+    <div class="acoes">
+        <a href="{% url 'listar_receitas' %}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Voltar para a lista</a>
+        <a href="{% url 'excluir_receita' receita.pk %}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</a>
+    </div>
+{% endblock %}
