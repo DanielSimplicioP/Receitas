@@ -2,26 +2,33 @@
 {% block title %}Cadastrar Receita{% endblock %}
 
 {% block content %}
-    <h2><i class="fas fa-plus-square"></i> Cadastrar Nova Receita</h2>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="mb-4"><i class="fas fa-plus-square me-2"></i>Cadastrar Nova Receita</h2>
 
-    <form method="POST" class="form-receita">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="nome">Nome da Receita:</label>
-            <input type="text" name="nome" id="nome" required placeholder="Ex: Bolo de Chocolate Cremoso">
+            <form method="POST" class="form-receita">
+                {% csrf_token %}
+                <div class="mb-3 form-group">
+                    <label for="nome" class="form-label">Nome da Receita:</label>
+                    <input type="text" name="nome" id="nome" class="form-control" required placeholder="Ex: Bolo de Chocolate Cremoso">
+                </div>
+
+                <div class="mb-3 form-group">
+                    <label for="ingredientes" class="form-label">Ingredientes:</label>
+                    <textarea name="ingredientes" id="ingredientes" class="form-control" rows="8" required placeholder="Ex: 2 xícaras de farinha, 1 xícara de açúcar..."></textarea>
+                </div>
+
+                <div class="mb-3 form-group">
+                    <label for="modo_preparo" class="form-label">Modo de Preparo:</label>
+                    <textarea name="modo_preparo" id="modo_preparo" class="form-control" rows="12" required placeholder="Ex: 1. Misture os ingredientes secos... 2. Adicione os líquidos..."></textarea>
+                </div>
+
+                <div class="acoes text-center">
+                    <button type="submit" class="btn btn-primary me-2"><i class="fas fa-save me-1"></i> Salvar Receita</button>
+                    <a href="{% url 'listar_receitas' %}" class="btn btn-secondary"><i class="fas fa-times-circle me-1"></i> Cancelar</a>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="ingredientes">Ingredientes:</label>
-            <textarea name="ingredientes" id="ingredientes" rows="8" required placeholder="Ex: 2 xícaras de farinha, 1 xícara de açúcar..."></textarea>
-        </div>
-        <div class="form-group">
-            <label for="modo_preparo">Modo de Preparo:</label>
-            <textarea name="modo_preparo" id="modo_preparo" rows="12" required placeholder="Ex: 1. Misture os ingredientes secos... 2. Adicione os líquidos..."></textarea>
-        </div>
-        
-        <div class="acoes">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Salvar Receita</button>
-            <a href="{% url 'listar_receitas' %}" class="btn btn-secondary"><i class="fas fa-times-circle"></i> Cancelar</a>
-        </div>
-    </form>
+    </div>
+
 {% endblock %}

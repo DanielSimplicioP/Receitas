@@ -4,34 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Livro de Receitas{% endblock %}</title> {# Adicionado block title #}
+    <title>{% block title %}Livro de Receitas{% endblock %}</title> 
     
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+        <!-- Bootstrap CSS (CDN) -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles -->
+        <link rel="stylesheet" href="{% static 'core/style.css' %}">
 </head>
 <body>
-    <header>
-        <div class="container"> {# Adicionado container para centralizar #}
-            <h1><a href="{% url 'listar_receitas' %}"><i class="fas fa-book-open"></i> Meu Livro de Receitas</a></h1>
-            <nav> {# Adicionado menu de navegação #}
-                <a href="{% url 'listar_receitas' %}">Receitas</a>
-                <a href="{% url 'cadastrar_receita' %}">Adicionar Nova</a>
-            </nav>
-        </div>
-    </header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#FF7F50;">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'listar_receitas' %}">
+                    <i class="fas fa-book-open me-2"></i>
+                    <span>Meu Livro de Receitas</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'listar_receitas' %}">Receitas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'cadastrar_receita' %}">Adicionar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     <main>
-        <div class="container"> {# Adicionado container para centralizar #}
+        <div class="container"> 
             {% block content %}
             {% endblock %}
         </div>
     </main>
     <footer>
         <div class="container">
-            <p>&copy; 2025 Livro de Receitas. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Livro de Receitas. UNINASSAU. Todos os direitos reservados.</p>
         </div>
     </footer>
+    <!-- Bootstrap JS (bundle includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

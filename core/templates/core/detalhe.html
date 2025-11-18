@@ -2,22 +2,27 @@
 {% block title %}{{ receita.nome }}{% endblock %}
 
 {% block content %}
-    <h2 class="receita-titulo"><i class="fas fa-utensils"></i> {{ receita.nome }}</h2>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="receita-titulo mb-4"><i class="fas fa-utensils me-2"></i>{{ receita.nome }}</h2>
 
-    <div class="receita-detalhe-container">
-        <div class="receita-detalhe-secao">
-            <h3><i class="fas fa-clipboard-list"></i> Ingredientes</h3>
-            <pre>{{ receita.ingredientes }}</pre>
-        </div>
+            <div class="row receita-detalhe-container">
+                <div class="col-md-6 receita-detalhe-secao">
+                    <h3><i class="fas fa-clipboard-list me-2"></i>Ingredientes</h3>
+                    <pre class="mt-3">{{ receita.ingredientes }}</pre>
+                </div>
 
-        <div class="receita-detalhe-secao">
-            <h3><i class="fas fa-book"></i> Modo de Preparo</h3>
-            <pre>{{ receita.modo_preparo }}</pre>
+                <div class="col-md-6 receita-detalhe-secao">
+                    <h3><i class="fas fa-book me-2"></i>Modo de Preparo</h3>
+                    <pre class="mt-3">{{ receita.modo_preparo }}</pre>
+                </div>
+            </div>
+
+            <div class="acoes text-center mt-4">
+                <a href="{% url 'listar_receitas' %}" class="btn btn-secondary me-2"><i class="fas fa-arrow-left me-1"></i> Voltar para a lista</a>
+                <a href="{% url 'excluir_receita' receita.pk %}" class="btn btn-danger"><i class="fas fa-trash-alt me-1"></i> Excluir</a>
+            </div>
         </div>
     </div>
-    
-    <div class="acoes">
-        <a href="{% url 'listar_receitas' %}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Voltar para a lista</a>
-        <a href="{% url 'excluir_receita' receita.pk %}" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir</a>
-    </div>
+
 {% endblock %}
