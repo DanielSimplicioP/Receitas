@@ -15,21 +15,15 @@ def detalhe_receita(request, pk):
 # (US 1) Lógica para CADASTRAR
 def cadastrar_receita(request):
     if request.method == 'POST':
-        # Se o formulário foi enviado (POST)
-        nome = request.POST.get('nome')
-        ingredientes = request.POST.get('ingredientes')
-        modo_preparo = request.POST.get('modo_preparo')
-        
-        # Cria e salva no banco
-        Receita.objects.create(
-            nome=nome,
-            ingredientes=ingredientes,
-            modo_preparo=modo_preparo
-        )
-        return redirect('listar_receitas') # Redireciona para a lista
-    
-    # Se for um acesso normal (GET), apenas mostra o formulário
-    return render(request, 'core/form_receita.html')
+        form = ReceitaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_receitas')
+    else:
+        form = ReceitaForm()
+
+    # Renderiza o formulário (com erros quando existir)
+    return render(request, 'core/form_receita.html', {'form': form})
 
 # (US 4) Lógica para EXCLUIR
 def excluir_receita(request, pk):
