@@ -1,0 +1,25 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+
+# SQLite
+*.sqlite3
+
+# Logs and local runtime files
+*.log
+server.log
+server.err
+
+# Editor / OS files
+.vscode/
+*.swp
+Thumbs.db
+Desktop.ini
+
+# Env files
+.env
+env/
