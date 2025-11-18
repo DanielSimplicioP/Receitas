@@ -1,6 +1,7 @@
 # core/views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Receita
+from .forms import ReceitaForm
 
 # (US 2) Lógica para LISTAR
 def listar_receitas(request):
